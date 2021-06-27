@@ -52,9 +52,7 @@ public class Director {
             } catch (DataException e) {
                 e.printStackTrace();
             }
-            // Read lines from file
-            // for each valid line create a geometry object (according to your task)
         }
-        return null;
+        return triangles;
     }
 }

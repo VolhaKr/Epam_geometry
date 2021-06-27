@@ -1,29 +1,31 @@
 package com.epam.geometry.data;
 
+import com.sun.org.apache.bcel.internal.util.ClassPath;
+
+import javax.annotation.Resource;
+import javax.print.DocFlavor;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DataReader {
-
-    //TODO: implement this method using BufferedReader, do not throw original IOException, wrap it with your own
-
-    public List<String> readLines(String filename) throws DataException {
-
-        // final String INPUT_FILE = "src/file.txt";
-        String line = null;
-        BufferedReader reader = null;
-        List<String> readLines = new ArrayList<String>();
+    private String line = null;
+    BufferedReader reader = null;
+    FileReader fileReader;
+    List<String> readLines = new ArrayList<String>();
+    public static final String INPUT_FILE = "src/resources/file.txt";
 
 
-        System.out.println("Reading fom file");
+    public List<String> readLines(String fileName) throws DataException {
+               Path path = Paths.get(fileName);
+        System.out.println("path " + path);
+//String inputFilePath = String.valueOf(Paths.get(directoryPath + INPUT_FILE));
 
-//
-//
-//        public class FileQuoteList {
 //
 //            final String fileName = "files/quote.txt";
 //            final File file = getFileFromResource(fileName);
@@ -54,17 +56,22 @@ public class DataReader {
 //            }
 //        }
 
+
+
+
+
+       // System.out.println("Reading fom file");
         try {
-            FileReader fileReader = new FileReader(filename);
-            System.out.println("FileReader " + fileReader.getClass());
+            
+            fileReader = new FileReader(String.valueOf(path));
+            System.out.println(String.valueOf(path));
+          //  System.out.println("FileReader " + fileReader.getClass());
             reader = new BufferedReader(fileReader);
             //reader = new BufferedReader(new FileReader(INPUT_FILE));
             System.out.println("Buffered reader created " + reader.getClass());
         } catch (FileNotFoundException e) {
             throw new DataException("File not found", e);
         }
-
-        // Reading data using readLine
 
         try {
             while ((line = reader.readLine()) != null) {
@@ -75,15 +82,19 @@ public class DataReader {
             throw new DataException("IO Exception", e);
         }
 
-        System.out.println("Finished reading file");
-        int i = 0;
-        for ( String line1 : readLines ) {
-            System.out.println("Read LIne " + i + line1);
-            i++;
+//        System.out.println("Finished reading file");
+//        int i = 0;
+//        for ( String line1 : readLines ) {
+//            System.out.println("Read Line " + i + line1);
+//            i++;
+////        }
 
+        try {
+            fileReader.close();
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-//^(?:[+\-]{0,1}[\d]+(?:\.[\d]+)*\s*){2}$
         return readLines;
     }
-
 }
