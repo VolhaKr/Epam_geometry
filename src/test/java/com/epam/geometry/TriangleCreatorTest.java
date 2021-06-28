@@ -30,11 +30,11 @@ public class TriangleCreatorTest {
 
     @Test
     public void testCreateTriangleShouldReturnTriangle() {
-        double[] oneLineCoord = {0, 6, 1, 7, 0, 56.67};
+        double[] triangleLineCoord = {0, 6, 1, 7, 0, 56.67};
         Triangle receivedTriangle = null;
         Triangle expectedTriangle = new Triangle(new double[]{0, 6, 1, 7, 0, 56.67});
         try {
-            receivedTriangle = triangleCreator.createTriangle(oneLineCoord);
+            receivedTriangle = triangleCreator.createTriangle(triangleLineCoord);
         } catch (DataException e) {
             e.printStackTrace();
         }

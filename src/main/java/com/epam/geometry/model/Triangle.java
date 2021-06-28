@@ -59,6 +59,7 @@ public class Triangle {
         if (this == o) return true;
         if (!(o instanceof Triangle)) return false;
         Triangle triangle = (Triangle) o;
+
         return Double.compare(triangle.getX1(), getX1()) == 0 &&
                 Double.compare(triangle.getY1(), getY1()) == 0 &&
                 Double.compare(triangle.getX2(), getX2()) == 0 &&
@@ -70,5 +71,17 @@ public class Triangle {
     @Override
     public int hashCode() {
         return Objects.hash(getX1(), getY1(), getX2(), getY2(), getX3(), getY3());
+    }
+
+    @Override
+    public String toString() {
+        return "Triangle{" +
+                "x1=" + x1 +
+                ", y1=" + y1 +
+                ", x2=" + x2 +
+                ", y2=" + y2 +
+                ", x3=" + x3 +
+                ", y3=" + y3 +
+                '}';
     }
 }

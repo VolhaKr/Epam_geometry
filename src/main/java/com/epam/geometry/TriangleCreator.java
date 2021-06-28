@@ -5,18 +5,25 @@ import com.epam.geometry.model.Triangle;
 
 public class TriangleCreator {
     private static final double DELTA = 1e-15;
-    Triangle createTriangle(double[] coordinates) throws DataException {
-        if (coordinates.length != 6) {
-            throw new DataException("String contains not enought values");
-        }
-        validate3PointsForTriangle(coordinates);
-        return new Triangle(coordinates);
-    }
 
-   boolean validate3PointsForTriangle(double[] points) throws DataException {
-        if ((points[0] - points[4]) * (points[3] - points[5]) - (points[2] - points[4]) * (points[1] - points[5]) < DELTA) {
+    Triangle createTriangle(double[] coordinates) throws DataException {
+        if (validate3PointsForTriangle(coordinates)) {
+            return new Triangle(coordinates);
+        }
+        else {
             throw new DataException("Points lay at one line");
         }
-        return true;
+    }
+
+    boolean validate3PointsForTriangle(double[] coordinates) {
+
+        double deltaForLine1 = (coordinates[0] - coordinates[4]) * (coordinates[3] - coordinates[5]);
+        double deltaForLine2 = (coordinates[2] - coordinates[4]) * (coordinates[1] - coordinates[5]);
+        if (Math.abs(deltaForLine1 - deltaForLine2) > DELTA) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }

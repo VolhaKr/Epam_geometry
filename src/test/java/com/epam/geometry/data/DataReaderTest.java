@@ -12,7 +12,6 @@ import java.util.List;
 
 public class DataReaderTest {
 
-
     private DataReader dataReader;
     private List readList = new ArrayList();
 
@@ -20,7 +19,6 @@ public class DataReaderTest {
     public void prepare() {
         dataReader = new DataReader();
     }
-
 
     @Test
     public void testDataReaderShouldReturnReadList() {

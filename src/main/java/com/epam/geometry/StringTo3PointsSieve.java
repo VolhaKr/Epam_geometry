@@ -11,18 +11,21 @@ public class StringTo3PointsSieve {
         String[] splittedMembers = line.split("\\s+");
 
         if (splittedMembers.length < COORD_NUMBER) {
-            throw new DataException("String contains not enough values");
+            throw new DataException("String contains not enough values " + line);
         }
 
         if (splittedMembers.length > COORD_NUMBER) {
-            new DataException("String contains extra data");
+            pointCoordinates = null;
+            throw new DataException("String contains extra data " + line);
         }
 
-        for ( int i = 0; i < COORD_NUMBER; i++ ) {
-            try {
-                pointCoordinates[i] = Double.parseDouble(splittedMembers[i]);
-            } catch (NumberFormatException e) {
-                throw new DataException("String contains not a double value");
+        if (splittedMembers.length == COORD_NUMBER) {
+            for ( int i = 0; i < COORD_NUMBER; i++ ) {
+                try {
+                    pointCoordinates[i] = Double.parseDouble(splittedMembers[i]);
+                } catch (NumberFormatException e) {
+                    throw new DataException("String contains not a double value " + line, e);
+                }
             }
         }
         //^(?:[+\-]{0,1}[\d]+(?:\.[\d]+)*\s*){2}$
