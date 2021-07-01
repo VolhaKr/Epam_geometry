@@ -15,9 +15,9 @@ import java.util.List;
 
 public class DataReader {
     private String line = null;
-    BufferedReader reader = null;
-    FileReader fileReader;
-    List<String> readLines = new ArrayList<String>();
+    private BufferedReader reader = null;
+    private FileReader fileReader;
+    private List<String> readLines = new ArrayList<String>();
 
     public List<String> readLines(String fileName) throws DataException {
         Path path = Paths.get(fileName);

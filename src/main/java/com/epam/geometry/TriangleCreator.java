@@ -4,7 +4,7 @@ import com.epam.geometry.data.DataException;
 import com.epam.geometry.model.Triangle;
 
 public class TriangleCreator {
-    private static final double DELTA = 1e-15;
+    private final double DELTA = 1e-15;
 
     Triangle createTriangle(double[] coordinates) throws DataException {
         if (validate3PointsForTriangle(coordinates)) {
