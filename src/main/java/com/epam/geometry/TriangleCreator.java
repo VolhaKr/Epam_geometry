@@ -15,7 +15,7 @@ public class TriangleCreator {
         }
     }
 
-    boolean validate3PointsForTriangle(double[] coordinates) {
+    private boolean validate3PointsForTriangle(double[] coordinates) {
 
         double deltaForLine1 = (coordinates[0] - coordinates[4]) * (coordinates[3] - coordinates[5]);
         double deltaForLine2 = (coordinates[2] - coordinates[4]) * (coordinates[1] - coordinates[5]);
