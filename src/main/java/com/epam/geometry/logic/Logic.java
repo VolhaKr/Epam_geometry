@@ -7,8 +7,8 @@ public class Logic {
     private static final double DELTA = 1e-15;
 
     double calculateSquare(Triangle triangle) {
-        return (triangle.getX1() * (triangle.getY2() - triangle.getY3()) + triangle.getX2() * (triangle.getY3() - triangle.getY1()) +
-                triangle.getX3() * (triangle.getY1() - triangle.getY2())) / 2;
+        return Math.abs((triangle.getX1() * (triangle.getY2() - triangle.getY3()) + triangle.getX2() * (triangle.getY3() - triangle.getY1()) +
+                triangle.getX3() * (triangle.getY1() - triangle.getY2())) / 2);
     }
 
     boolean checkRight(Triangle triangle) {
